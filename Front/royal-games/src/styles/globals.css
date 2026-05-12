@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /*? Ordenados de acordo com o Style Guide no Figma. */
+    --preto: #0B0616;
+    --fundo: #221C2D;
+    --vermelho: #FF004C;
+    --roxo: #7A3BFF;
+    --branco: #FFFFFF;
+    --cinza: #D6D2E6;
+
+    --titulo: 36px;
+    --subtitulo: 32px;
+    --texto: 24px;
+}
+
+input, button, textarea, select, label{
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+/*?====================*/
+/*?     SCROLLBAR      */
+/*?====================*/
+
+::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--roxo);
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--vermelho);
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: var(--fundo);
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
