@@ -21,8 +21,10 @@ const Login = () => {
                                 <label htmlFor="senha">Senha</label>
                                 <input type="password" name="senha" placeholder="********"/>
                             </div>
-
-                            <button>Entrar</button>
+                            
+                            <div className={styles.campo_button}>    
+                                <button>Entrar</button>
+                            </div>
                         </form>
                     </div>
                 </section>
