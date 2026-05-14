@@ -1,8 +1,9 @@
 #header{
-    min-height: 30vh;
+    min-height: 15vh;
     background-color: var(--fundo);
     color: var(--branco);
     font-family: var(--font-exo2);
+    padding: 0px 50px;
 }
 
 #header > div{
