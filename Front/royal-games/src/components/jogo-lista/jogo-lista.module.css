@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 5%;
-    width: 70%;
+    width: 90%;
+    margin-top: 5%;
 }
 
 .filtros input{
@@ -16,42 +16,34 @@
     font-weight: 600;
     outline: none;
     padding: 0% 2%;
-    border-radius: .5vw;
+    border-radius: 10px;
 }
 
 .filtros .botoes{
-    width: 430px;
     display: flex;
     flex-direction: row;
+    gap: 5%;
 }
 
 .filtros div button{
-    width: 220px;
-    white-space: nowrap;
-    height: 5vh;
-    font-size: clamp(1vw, 1.2rem, 2vw);
-    color: var(--preto);
+    width: 230px;
+    height: 50px;
+    font-size: var(--texto);
+    color: var(--cinza);
+    background-color: rgb(from var(--cinza) r g b / 20%);
     font-weight: 600;
-    outline: none;
-    padding: 1% 0 1% 1%;
-    border-radius: .5vw;
-    transition: .1s ease-in-out;
-}
-
-.filtros div button:hover{
-    background-color: var(--vermelho);
+    box-shadow: 0 0 1px var(--cinza);
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 .lista_jogo{
-    /* width: 80%; */
-    /* height: 80%; */
     width: 70vw;
     height: clamp(80vw, 90vh, 91vw);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5%;
-    
 }
 
 .navegacao{

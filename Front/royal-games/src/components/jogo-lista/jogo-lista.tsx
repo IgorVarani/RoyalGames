@@ -1,5 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 import styles from "./jogo-lista.module.css"
+import Card from "../jogo-card/jogo-card";
 
 const Lista = () => {
     return (
@@ -13,9 +14,9 @@ const Lista = () => {
             </div>
 
             <ul className={styles.lista_jogo}>
-                {/*<Cards />
-                <Cards />
-                <Cards />*/}
+                <Card />
+                <Card />
+                <Card />
             </ul>
 
             <nav className={styles.navegacao}>
@@ -35,6 +36,6 @@ const Lista = () => {
             </nav>
         </Fragment>
     );
-};
+}
 
 export default Lista;
