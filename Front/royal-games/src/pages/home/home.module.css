@@ -44,11 +44,27 @@
 }
 
 #catalogo{
-    height: 20vh;
+    height: 60vh;
+    align-items: center;
+    justify-items: center;
+}
+
+#catalogo h2{
+    font-family: var(--font-orbitron);
+    font-size: var(--subtitulo);
+    font-weight: 600;
+    margin-bottom: 1%;
+}
+
+#linha_h2{
+    border: 1px solid var(--vermelho);
+    width: 35%;
+    margin: 10px auto;
 }
 
 #comportamento{
     align-items: center;
+    height: 70vh;
 }
 
 #comportamento h3{
@@ -79,4 +95,11 @@
 #comportamento_container img{
     width: 299px;
     height: 310px;
+}
+
+.comportamento_texto{
+    font-family: var(--font-exo2);
+    font-size: var(--texto);
+    width: 100%;
+    text-align: center;
 }

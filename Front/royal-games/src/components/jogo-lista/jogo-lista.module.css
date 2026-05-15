@@ -1,0 +1,114 @@
+.filtros{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5%;
+    width: 70%;
+}
+
+.filtros input{
+    width: 580px;
+    height: 50px;
+    font-size: var(--texto);
+    background-color: rgb(from var(--cinza) r g b / 20%);
+    color: var(--cinza);
+    box-shadow: 0 0 1px var(--cinza);
+    font-weight: 600;
+    outline: none;
+    padding: 0% 2%;
+    border-radius: .5vw;
+}
+
+.filtros .botoes{
+    width: 430px;
+    display: flex;
+    flex-direction: row;
+}
+
+.filtros div button{
+    width: 220px;
+    white-space: nowrap;
+    height: 5vh;
+    font-size: clamp(1vw, 1.2rem, 2vw);
+    color: var(--preto);
+    font-weight: 600;
+    outline: none;
+    padding: 1% 0 1% 1%;
+    border-radius: .5vw;
+    transition: .1s ease-in-out;
+}
+
+.filtros div button:hover{
+    background-color: var(--vermelho);
+    cursor: pointer;
+}
+
+.lista_jogo{
+    /* width: 80%; */
+    /* height: 80%; */
+    width: 70vw;
+    height: clamp(80vw, 90vh, 91vw);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5%;
+    
+}
+
+.navegacao{
+    margin-top: 10vh;
+    display: inline-flex;
+    width: auto;
+    gap: 5%;
+    height: 10vh;
+}
+
+.navegacao button{
+    height: 100%;
+    background-color: transparent;
+    width: 3vw;
+
+}
+
+.navegacao_botao{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: fit-content;
+    
+}
+.navegacao_botao img{
+    
+    width: 1.5vw;
+
+}
+
+.navegacao ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 2vw;
+    height: 100%;
+    width: 100%;
+}
+
+.navegacao ul li{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 2.5vw;
+    font-size: clamp(.5vw, 1.5rem, 2vw);
+    color: var(--branco);
+
+}
+
+.navegacao ul li, .navegacao button {
+    border: 1px solid var(--vermelho);
+    border-radius: .2vw;
+}
+
+.navegacao ul li:hover, .navegacao button:hover{
+    cursor: pointer;
+}

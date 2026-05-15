@@ -3,6 +3,7 @@ import styles from "./home.module.css"
 import { ToastContainer } from "react-toastify/unstyled";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
+import Lista from "@/components/jogo-lista/jogo-lista";
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
                 <section id={styles.catalogo}>
                     <h2>Catálogo de Jogos</h2>
                     <hr id={styles.linha_h2}></hr>
+                    <Lista/>
                 </section>
 
                 <section id={styles.comportamento}>
