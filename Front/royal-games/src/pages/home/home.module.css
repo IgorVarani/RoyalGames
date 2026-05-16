@@ -15,7 +15,7 @@
 }
 
 #banner_esquerda{
-    padding-left: 10%;
+    padding-left: 12%;
     margin-bottom: 10%;
 }
 
@@ -44,7 +44,7 @@
 }
 
 #catalogo{
-    height: 80vh;
+    min-height: 110vh;
     align-items: center;
     justify-items: center;
 }
@@ -64,7 +64,7 @@
 
 #comportamento{
     align-items: center;
-    height: 70vh;
+    min-height: 70vh;
 }
 
 #comportamento h3{

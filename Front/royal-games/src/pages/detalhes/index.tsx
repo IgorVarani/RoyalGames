@@ -33,23 +33,31 @@ const Detalhes = () => {
 
                     <div id={styles.container_abaixo}>
                         <aside id={styles.esquerda}>
-                            <h3 className={styles.esquerda_h3}>Classificação Indicativa:</h3>
-                            <p className={styles.esquerda_p}>18 Anos</p>
+                            <div className={styles.info}>    
+                                <h3 className={styles.esquerda_h3}>Classificação Indicativa:</h3>
+                                <p className={styles.esquerda_p}>18 Anos</p>
+                            </div>
 
-                            <h3 className={styles.esquerda_h3}>Preço:</h3>
-                            <p className={styles.esquerda_p}>R$00,00</p>
+                            <div className={styles.info}>    
+                                <h3 className={styles.esquerda_h3}>Preço:</h3>
+                                <p className={styles.esquerda_p}>R$00,00</p>
+                            </div>
                         </aside>
 
                         <aside id={styles.direita}>
-                            <h3 className={styles.direita_h3}>Gênero(s)</h3>
-                            <ul>
-                                <li>MOBA</li>
-                            </ul>
+                            <div className={styles.info}>
+                                <h3 className={styles.direita_h3}>Gênero(s):</h3>
+                                <ul>
+                                    <li>MOBA</li>
+                                </ul>
+                            </div>
 
-                            <h3 className={styles.direita_h3}>Plataforma(s)</h3>
-                            <ul>
-                                <li>PC</li>
-                            </ul>
+                            <div className={styles.info}>
+                                <h3 className={styles.direita_h3}>Plataforma(s):</h3>
+                                <ul>
+                                    <li>PC</li>
+                                </ul>
+                            </div>
                         </aside>
                     </div>
                 </section>

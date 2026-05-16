@@ -8,7 +8,7 @@ const Lista = () => {
             <div className={styles.filtros}>
                 <input type="text" name="Pesquisa" placeholder="Pesquise..." />
                 <div className={styles.botoes}>
-                    <button>Menor preço</button>
+                    <button>Menor Preço</button>
                     <button>Categoria</button>
                 </div>
             </div>
@@ -17,11 +17,14 @@ const Lista = () => {
                 <Card />
                 <Card />
                 <Card />
+                <Card />
+                <Card />
+                <Card />
             </ul>
 
             <nav className={styles.navegacao}>
                 <button className={styles.navegacao_botao}>
-                    <img src="../svg/seta-esquerda.svg" alt="" />
+                    <img src="/imgs/seta-esquerda.svg" alt="" />
                 </button>
             <ul>
                 <li>1</li>
@@ -31,7 +34,7 @@ const Lista = () => {
                 <li>5</li>
             </ul>
             <button className={styles.navegacao_botao}>
-                <img src="../svg/seta-direita.svg" alt="" />
+                <img src="/imgs/seta-direita.svg" alt="" />
             </button>
             </nav>
         </Fragment>
