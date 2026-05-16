@@ -1,0 +1,128 @@
+#main{
+    min-height: 140vh;
+    background-color: var(--fundo);
+}
+
+#section{
+    width: 85%;
+    margin: 0 auto;
+    padding: 3% 3%;
+    box-shadow: 0 0 5px var(--cinza);
+}
+
+#campo_cadastro h1{
+    font-family: var(--font-orbitron);
+    text-align: center;
+    color: var(--cinza);
+    font-size: var(--titulo);
+    font-weight: 600;
+}
+
+#campo_cadastro hr{
+    width: 35%;
+    border: 1px solid var(--vermelho);
+    margin: 10px auto;
+}
+
+#formulario{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+#esquerda{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.linha{
+    display: flex;
+    gap: 20px;
+}
+
+.campo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.campo label, #direita label{
+    font-family: var(--font-exo2);
+    font-size: var(--texto);
+    font-weight: 500;
+    color: var(--cinza);
+    white-space: nowrap;
+}
+
+.campo input, .campo select, #direita textarea{
+    background-color: rgb(from var(--cinza) r g b / 20%);
+    outline: none;
+    box-shadow: 0 0 1px var(--cinza);
+    border-radius: 6px;
+    outline: none;
+    color: var(--cinza);
+    padding: 10px 12px;
+    font-size: var(--texto);
+    font-family: var(--font-exo2);
+}
+
+.campo input, .campo select{
+    height: 45px;
+}
+
+#direita{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#direita textarea{
+    width: 100%;
+    height: 100%;
+    min-height: 210px;
+    resize: none;
+}
+
+#botao{
+    display: block;
+    width: 180px;
+    height: 45px;
+    margin: 35px auto 0 auto;
+    border: 2px solid var(--vermelho);
+    border-radius: 10px;
+    background-color: transparent;
+    color: var(--cinza);
+    font-family: var(--font-exo2);
+    font-size: var(--texto);
+    cursor: pointer;
+    transition: transform .06s ease, box-shadow .06s ease;
+}   
+
+#botao:active{
+    transform: translateY(4px);
+    box-shadow: 0 5px 0 var(--vermelho);
+}
+    
+#lista{
+    min-height: 160vh;
+    align-items: center;
+    justify-items: center;
+    margin: 5% 15% 0%;
+}
+
+#lista h2{
+    font-family: var(--font-orbitron);
+    font-size: var(--subtitulo);
+    color: var(--cinza);
+    font-weight: 600;
+}
+
+#linha_h2{
+    border: 1px solid var(--vermelho);
+    width: 35%;
+    margin: 10px auto;
+}
