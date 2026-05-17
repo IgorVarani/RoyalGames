@@ -17,7 +17,7 @@
         public List<int> PlataformaID { get; set; } = new();
         public List<string> Plataformas { get; set; } = new();
 
-        // Classificacao
+        // Classificação (Id precisa ser diferente)
         public int? ClassificacaoId { get; set; }
         public string? Classificacao { get; set; }
 
@@ -26,6 +26,7 @@
         public string? UsuarioNome { get; set; }
         public string? UsuarioEmail { get; set; }
 
+        // ImagemUrl
         public string? ImagemUrl { get; set; }
     }
 }

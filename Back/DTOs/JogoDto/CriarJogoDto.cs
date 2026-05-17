@@ -10,8 +10,7 @@
         public List<int> GeneroID { get; set; } = new();
         public List<int> PlataformaID { get; set; } = new();
 
+        // O Id precisa ser diferente --> "Id"
         public int ClassificacaoId { get; set; }
-
-
     }
 }
