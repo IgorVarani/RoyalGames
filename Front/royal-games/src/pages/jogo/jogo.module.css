@@ -107,14 +107,14 @@
     box-shadow: 0 5px 0 var(--vermelho);
 }
     
-#lista{
+.lista{
     min-height: 160vh;
     align-items: center;
     justify-items: center;
     margin: 5% 15% 0%;
 }
 
-#lista h2{
+.lista h2{
     font-family: var(--font-orbitron);
     font-size: var(--subtitulo);
     color: var(--cinza);

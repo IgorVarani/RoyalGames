@@ -1,5 +1,5 @@
 import { Fragment } from "react/jsx-runtime";
-import styles from "./cadastrar.module.css";
+import styles from "./jogo.module.css";
 import { ToastContainer } from "react-toastify";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
@@ -8,7 +8,7 @@ import Lista from "@/components/jogo-lista/jogo-lista";
 const Cadastrar = () => {
     return (
         <Fragment>
-            <Header />
+            <Header page="cadastrar"/>
             <ToastContainer />
             <main id={styles.main}>
                 <section id={styles.section}>
@@ -70,7 +70,7 @@ const Cadastrar = () => {
                     </div>
                 </section>
 
-                <section id={styles.lista}>
+                <section id="lista" className={styles.lista}>
                     <h2>Lista de Jogos</h2>
                     <hr id={styles.linha_h2}></hr>
                     <Lista/>

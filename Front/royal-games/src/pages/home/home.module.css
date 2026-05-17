@@ -43,13 +43,13 @@
     height: 665px;
 }
 
-#catalogo{
+.catalogo{
     min-height: 110vh;
     align-items: center;
     justify-items: center;
 }
 
-#catalogo h2{
+.catalogo h2{
     font-family: var(--font-orbitron);
     font-size: var(--subtitulo);
     font-weight: 600;

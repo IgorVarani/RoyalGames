@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./jogo-card.module.css"
 
 const Card = () =>{
@@ -6,7 +7,9 @@ const Card = () =>{
             <img src="/imgs/jogo-exemplo.svg" alt="" />
             <span>League of Legends</span>
             <p>R$ 00,00</p>
-            <button>Detalhes</button>
+            <Link href="/detalhes">
+                <button>Detalhes</button>
+            </Link>
         </article>
     );
 }

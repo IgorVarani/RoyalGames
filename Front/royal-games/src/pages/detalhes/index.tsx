@@ -8,7 +8,7 @@ const Detalhes = () => {
     return (
         <Fragment>
             <ToastContainer/>
-            <Header/>
+            <Header page="detalhes"/>
             <main id={styles.main}>
                 <section id={styles.section}>
                     <h1>Detalhes do Jogo</h1>

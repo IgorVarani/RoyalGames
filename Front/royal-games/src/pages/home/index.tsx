@@ -8,7 +8,7 @@ import Lista from "@/components/jogo-lista/jogo-lista";
 const Home = () => {
     return (
         <Fragment>
-            <Header/>
+            <Header page="home"/>
             <ToastContainer/>
             <main id={styles.main}>
                 <section id={styles.banner}>
@@ -25,7 +25,7 @@ const Home = () => {
                     </div>
                 </section>
 
-                <section id={styles.catalogo}>
+                <section id="catalogo" className={styles.catalogo}>
                     <h2>Catálogo de Jogos</h2>
                     <hr id={styles.linha_h2}></hr>
                     <Lista/>

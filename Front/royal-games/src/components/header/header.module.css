@@ -36,6 +36,12 @@
     font-size: var(--texto);
 }
 
+.link{
+    text-decoration: none;
+    color: var(--branco);
+    font-size: var(--texto);
+}
+
 #botao{
     border: 2px solid var(--vermelho);
     border-radius: 10px;
