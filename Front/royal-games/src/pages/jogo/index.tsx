@@ -1,45 +1,178 @@
 import { Fragment } from "react/jsx-runtime";
 import styles from "./jogo.module.css";
-import { ToastContainer } from "react-toastify";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import Lista from "@/components/jogo-lista/jogo-lista";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { listarClassificacaoIndicativa, listarGenero, listarPlataforma } from "../api/genericService";
+import { cadastrarJogo, editarJogo, listarJogo, listarPorId } from "../api/jogoService";
+import { erro, notificao } from "@/utils/toast";
+import { verificarAutenticacao } from "@/utils/auth";
+import Toast from "@/components/toast/toast";
+
+interface ClassificacaoIndicativa
+{
+    classificacaoIndicativaId: number;
+    classificacao: string;
+}
+
+interface Genero
+{
+    generoId: number;
+    nome: string;
+}
+
+interface Plataforma
+{
+    plataformaId: number;
+    nome: string;
+}
 
 const Cadastrar = () => {
+
+    const[classificacoes, setClassificacoes] = useState<ClassificacaoIndicativa[]>([]);
+    const[generos, setGeneros] = useState<Genero[]>([]);
+    const[plataformas, setPlataformas] = useState<Plataforma[]>([]);
+
+    const[nome, setNome] = useState<string>("");
+    const[descricao, setDescricao] = useState<string>("");
+    const[preco, setPreco] = useState<string>("");
+    const[imagem, setImagem] = useState<File | null>(null);
+    const[classificacoesSelecionadas, setClassificacoesSelecionadas] = useState<number[]>([]);
+    const[generosSelecionados, setGenerosSelecionados] = useState<number[]>([]);
+    const[plataformasSelecionadas, setPlataformasSelecionadas] = useState<number[]>([]);
+
+    const[estaAutenticado, setEstaAutenticado] = useState(false);
+
+    const router = useRouter();
+    const id = router.query.id;
+    let telaEditar = id ? true : false;
+
+    async function listarClassificacaoEmJogo()
+    {
+        const lista = await listarClassificacaoIndicativa();
+        setClassificacoes(lista.data);
+    }
+
+    async function listarGeneroEmJogo()
+    {
+        const lista = await listarGenero();
+        setGeneros(lista.data);
+    }
+
+    async function listarPlataformaEmJogo()
+    {
+        const lista = await listarPlataforma();
+        setPlataformas(lista.data);
+    }
+
+    async function carregarInformacoes()
+    {
+        if(!id) return;
+
+        const jogo = await listarPorId(Number(id));
+
+        setNome(jogo.nome);
+        setDescricao(jogo.descricao);
+        setPreco(String(jogo.preco));
+        setClassificacoesSelecionadas(jogo.classificacaoId || []); //? "Id" é diferente dos outros porque o backend espera dessa forma.
+        setGenerosSelecionados(jogo.generoID || []);
+        setPlataformasSelecionadas(jogo.plataformaID || []);
+    }
+
+    async function salvarJogo(e: React.FormEvent<HTMLFormElement>)
+    {
+        e.preventDefault();
+        try
+        {
+            const dados =
+            {
+                nome,
+                descricao,
+                preco,
+                imagem,
+                classificacaoId: classificacoesSelecionadas,
+                generoID: generosSelecionados,
+                plataformaID: plataformasSelecionadas,
+            }
+
+            if(telaEditar)
+            {
+                await editarJogo(Number(id), dados);
+                notificao("Jogo editado com sucesso!");
+            }
+            else
+            {
+                await cadastrarJogo(dados);
+                notificao("Jogo cadastrado com sucesso!");
+            }
+        }
+        catch(error: any)
+        {
+            erro(error.message);
+        }
+    }
+
+    //? Quando o jogo for renderizado, as funções "listarXXX" de cada atributo ocorrerão.
+    useEffect(() => {
+        if(!router.isReady) return;
+
+        if(!verificarAutenticacao())
+        {
+            router.push("/home");
+            return;
+        }
+            setEstaAutenticado(true);
+            listarClassificacaoEmJogo();
+            listarGeneroEmJogo();
+            listarPlataformaEmJogo();
+            carregarInformacoes();
+    }, [router.isReady, id]);
+
+    if(!estaAutenticado)
+    {
+        return null;
+    }
+
     return (
         <Fragment>
             <Header page="cadastrar"/>
-            <ToastContainer />
+            <Toast/>
             <main id={styles.main}>
                 <section id={styles.section}>
-                    <div id={styles.campo_cadastro}>
-                        <h1>Cadastrar Novo Jogo</h1>
+                    <form id={styles.campo_cadastro} onSubmit={salvarJogo}>
+                        <h1>{telaEditar ? "Editar Jogo Existente" : "Cadastrar Novo Jogo"}</h1>
                         <hr />
                         <div id={styles.formulario}>
                             <div id={styles.esquerda}>
                                 <div className={styles.campo}>
                                     <label>Nome</label>
-                                    <input type="text" />
+                                    <input type="text" placeholder="League of Legends"
+                                    value={nome} onChange={(e) => setNome(e.target.value)}/>
                                 </div>
 
                                 <div className={styles.linha}>
 
                                     <div className={styles.campo}>
-                                        <label>Valor</label>
-                                        <input type="text" />
+                                        <label>Preço</label>
+                                        <input type="text" placeholder="R$ 00,00"
+                                        value={preco} onChange={(e) => setPreco(e.target.value)}/>
                                     </div>
 
                                     <div className={styles.campo}>
                                         <label>Gênero</label>
-                                        <select>
-                                            <option></option>
+                                        <select multiple value={generosSelecionados.map((item) => item.toString())} onChange={(e) =>
+                                        setGenerosSelecionados(Array.from(e.target.selectedOptions).map((option) => Number(option.value)))}>
+                                            {generos.map((item) => (<option value={item.generoId} key={item.generoId}> {item.nome} </option>))}
                                         </select>
                                     </div>
 
                                     <div className={styles.campo}>
                                         <label>Classificação Indicativa</label>
-                                        <select>
-                                            <option></option>
+                                        <select multiple value={classificacoesSelecionadas.map((item) => item.toString())} onChange={(e) =>
+                                        setClassificacoesSelecionadas(Array.from(e.target.selectedOptions).map((option) => Number(option.value)))}>
+                                            {classificacoes.map((item) => (<option value={item.classificacaoIndicativaId} key={item.classificacaoIndicativaId}> {item.classificacao} </option>))}
                                         </select>
                                     </div>
                                 </div>
@@ -48,26 +181,28 @@ const Cadastrar = () => {
 
                                     <div className={styles.campo}>
                                         <label>Plataforma</label>
-                                        <select>
-                                            <option></option>
+                                        <select multiple value={plataformasSelecionadas.map((item) => item.toString())} onChange={(e) =>
+                                        setPlataformasSelecionadas(Array.from(e.target.selectedOptions).map((option) => Number(option.value)))}>
+                                            {plataformas.map((item) => (<option value={item.plataformaId} key={item.plataformaId}> {item.nome} </option>))}
                                         </select>
                                     </div>
 
                                     <div className={styles.campo}>
                                         <label>Imagem</label>
-                                        <input type="file" />
+                                        <input type="file" onChange={(e) => {if(e.target.files && e.target.files[0])(setImagem(e.target.files[0]))}}/>
                                     </div>
                                 </div>
                             </div>
 
                             <div id={styles.direita}>
                                 <label>Descrição</label>
-                                <textarea></textarea>
+                                <textarea placeholder="League of Legends é um jogo do gênero MOBA..."
+                                value={descricao} onChange={(e) => setDescricao(e.target.value)}/>
                             </div>
 
                         </div>
                         <button id={styles.botao}>Cadastrar</button>
-                    </div>
+                    </form>
                 </section>
 
                 <section id="lista" className={styles.lista}>

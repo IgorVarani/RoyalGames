@@ -65,7 +65,7 @@
     border-radius: 6px;
     outline: none;
     color: var(--cinza);
-    padding: 10px 12px;
+    padding: 10px 10px;
     font-size: var(--texto);
     font-family: var(--font-exo2);
 }

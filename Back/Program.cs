@@ -53,10 +53,6 @@ builder.Services.AddScoped<AutenticacaoService>();
 builder.Services.AddScoped<IClassificacaoIndicativaRepository, ClassificacaoIndicativaRepository>();
 builder.Services.AddScoped<ClassificacaoIndicativaService>();
 
-// Estado Conservação
-builder.Services.AddScoped<IEstadoConservacaoRepository, EstadoConservacaoRepository>();
-builder.Services.AddScoped<EstadoConservacaoService>();
-
 // Gênero
 builder.Services.AddScoped<IGeneroRepository, GeneroRepository>();
 builder.Services.AddScoped<GeneroService>();

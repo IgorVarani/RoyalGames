@@ -5,6 +5,7 @@ import { login } from "../api/authService";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const Login = () => {
 
@@ -40,7 +41,11 @@ const Login = () => {
                 <img src="/imgs/login.svg" alt="Imagem de uma mulher combinando com o tema do site."/>
                 <section id={styles.section}>
                     <div id={styles.campo_login}>
-                        <img src="/imgs/logo.svg" alt="Logo do site."/>
+                        <div>
+                            <Link href="/home">
+                                <img src="/imgs/logo.svg" alt="Logo do site."/>
+                            </Link>
+                        </div>
                         <form id={styles.formulario} onSubmit={autenticar}>
                             <div className={styles.campo_form}>
                                 <label htmlFor="email">Email</label>

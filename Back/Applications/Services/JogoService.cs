@@ -128,8 +128,6 @@ namespace Royal_Games.Applications.Services
 
         public LerJogoDto Atualizar(int Id, AtualizarJogoDto jogoDto)
         {
-            HorarioAlteracaoJogo.ValidarHorario();
-
             Jogo jogoBanco = _repository.ObterPorId(Id);
 
             if (jogoBanco == null)
