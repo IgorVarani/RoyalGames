@@ -210,7 +210,8 @@ const Cadastrar = () => {
                                     <label>Plataforma</label>
                                     <select multiple size={4} value={plataformasSelecionadas.map(String)} onChange={(e) =>
                                     setPlataformasSelecionadas(Array.from(e.target.selectedOptions).map((o) => Number(o.value)))}>
-                                        {plataformas.map((p) => (<option key={p.plataformaId} value={p.plataformaId}>{p.nome}</option>))}</select>
+                                        {plataformas.map((p) => (<option key={p.plataformaId} value={p.plataformaId}>{p.nome}</option>))}
+                                    </select>
                                 </div>
                         </div>
 

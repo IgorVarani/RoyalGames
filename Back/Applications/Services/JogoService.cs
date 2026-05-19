@@ -160,7 +160,7 @@ namespace Royal_Games.Applications.Services
                 jogoBanco.StatusJogo = jogoDto.StatusJogo.Value;
             }
 
-            _repository.Atualizar(jogoBanco, jogoDto.GeneroID, jogoDto.PlataformaID);
+            _repository.Atualizar(jogoBanco, jogoDto.GeneroID, jogoDto.PlataformaID, jogoDto.ClassificacaoId);
 
             return JogoParaDto.ConverterParaDto(jogoBanco);
         }

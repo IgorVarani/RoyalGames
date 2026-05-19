@@ -11,7 +11,7 @@ namespace Royal_Games.Interfaces
         bool JogoExiste(string nome, int? jogoIdAtual = null);
 
         void Adicionar(Jogo jogo, List<int> GeneroID, List<int>PlataformaID, int ClassificacaoId);
-        void Atualizar(Jogo jogo, List<int> GeneroID,List<int>PlataformaID);
+        void Atualizar(Jogo jogo, List<int> GeneroID,List<int>PlataformaID, int ClassificacaoId);
         void Remover(int Id);
     }
 }

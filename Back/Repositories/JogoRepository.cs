@@ -93,7 +93,7 @@ namespace Royal_Games.Repositories
             _context.SaveChanges();
         }
 
-        public void Atualizar(Jogo jogo, List<int> GeneroID, List<int> PlataformaID)
+        public void Atualizar(Jogo jogo, List<int> GeneroID, List<int> PlataformaID, int ClassificacaoId)
         {
             Jogo? jogoBanco = _context.Jogo
                 .Include(jogo => jogo.Genero)
@@ -108,6 +108,7 @@ namespace Royal_Games.Repositories
             jogoBanco.Nome = jogo.Nome;
             jogoBanco.Preco = jogo.Preco;
             jogoBanco.Descricao = jogo.Descricao;
+            jogoBanco.ClassificacaoIndicativaID = ClassificacaoId;
 
             if (jogo.Imagem != null && jogo.Imagem.Length > 0)
             {
