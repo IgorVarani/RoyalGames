@@ -12,13 +12,13 @@ import {
   listarClassificacaoIndicativa,
   listarGenero,
   listarPlataforma,
-} from "../api/genericService";
+} from "../../api/genericService";
 
 import {
   cadastrarJogo,
   editarJogo,
   listarPorId,
-} from "../api/jogoService";
+} from "../../api/jogoService";
 
 import { erro, notificao } from "@/utils/toast";
 import { verificarAutenticacao } from "@/utils/auth";

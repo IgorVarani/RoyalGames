@@ -33,6 +33,7 @@ namespace Royal_Games.Repositories
                 .Include(jogo => jogo.Log_AlteracaoJogo)
                 .Include(jogo => jogo.Plataforma)
                 .Include(jogo => jogo.Usuario)
+                .Include(jogo => jogo.ClassificacaoIndicativa)
                 .FirstOrDefault(jogoDB => jogoDB.JogoID == Id);
 
             return jogo;
@@ -71,24 +72,22 @@ namespace Royal_Games.Repositories
             return jogo;
         }
 
-        public void Adicionar(Jogo jogo, List<int> GeneroID, List<int> PlataformaID)
+        public void Adicionar(Jogo jogo, List<int> GeneroID, List<int> PlataformaID, int ClassificacaoId)
         {
-            List<Genero> generos = _context.Genero.Where(genero => GeneroID.Contains(genero.GeneroID)).ToList();
-            List<Plataforma> plataformas = _context.Plataforma.Where(plataforma => PlataformaID.Contains(plataforma.PlataformaID)).ToList();
+            List<Genero> generos = _context.Genero
+                .Where(genero => GeneroID.Contains(genero.GeneroID))
+                .ToList();
+
+            List<Plataforma> plataformas = _context.Plataforma
+                .Where(plataforma => PlataformaID.Contains(plataforma.PlataformaID))
+                .ToList();
+
+            ClassificacaoIndicativa? classificacao = _context.ClassificacaoIndicativa
+                .FirstOrDefault(classificacao => classificacao.ClassificacaoIndicativaID == ClassificacaoId);
 
             jogo.Genero = generos;
             jogo.Plataforma = plataformas;
-                   
-
-            foreach (var genero in generos)
-            {
-                jogo.Genero.Add(genero);
-            }
-
-            foreach (var plataforma in plataformas)
-            {
-                jogo.Plataforma.Add(plataforma);
-            }
+            jogo.ClassificacaoIndicativaID = ClassificacaoId;
 
             _context.Jogo.Add(jogo);
             _context.SaveChanges();
@@ -99,7 +98,7 @@ namespace Royal_Games.Repositories
             Jogo? jogoBanco = _context.Jogo
                 .Include(jogo => jogo.Genero)
                 .Include(jogo => jogo.Plataforma)
-                .FirstOrDefault(jogoAux => jogo.JogoID == jogo.JogoID);
+                .FirstOrDefault(jogoAux => jogoAux.JogoID == jogo.JogoID);
 
             if (jogoBanco == null)
             {

@@ -47,3 +47,15 @@
 .card button:hover{
     cursor: pointer;
 }
+
+.acoes{
+    display: flex;
+    gap: 15px;
+    margin-top: 5%;
+}
+
+.acoes button{
+    width: 140px;
+    margin: 0;
+    flex: 1;
+}

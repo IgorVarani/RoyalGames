@@ -10,7 +10,7 @@ type JogoForm =
     plataformaID: number[],
 
     //? A escrita do "Id" é diferente dos outros porque o backend espera dessa forma.
-    classificacaoId: number[],
+    classificacaoId: number,
 }
 
 interface JogoList
@@ -24,7 +24,7 @@ interface JogoList
     plataformaID: number[],
 
     //? A escrita do "Id" é diferente dos outros porque o backend espera dessa forma.
-    classificacaoId: number[],
+    classificacaoId: number,
 }
 
 export async function cadastrarJogo(dados: JogoForm)
@@ -41,7 +41,7 @@ export async function cadastrarJogo(dados: JogoForm)
         }
         dados.generoID.forEach((id) => formData.append("generoID", id.toString()));
         dados.plataformaID.forEach((id) => formData.append("plataformaID", id.toString()));
-        dados.classificacaoId.forEach((id) => formData.append("classificacaoId", id.toString()));
+        formData.append("classificacaoId", dados.classificacaoId.toString());
 
         await api.post("Jogo", formData);
         console.log("Jogo cadastrado com sucesso!");
@@ -110,7 +110,7 @@ export async function editarJogo(jogoId : number, dados : JogoForm)
         }
         dados.generoID.forEach((id) => formData.append("generoID", id.toString()));
         dados.plataformaID.forEach((id) => formData.append("plataformaID", id.toString()));
-        dados.classificacaoId.forEach((id) => formData.append("classificacaoId", id.toString()));
+        formData.append("classificacaoId", dados.classificacaoId.toString());
 
         await api.put("Jogo/" + jogoId, formData);
     }

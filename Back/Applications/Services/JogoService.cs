@@ -121,7 +121,7 @@ namespace Royal_Games.Applications.Services
             };
 
 
-            _repository.Adicionar(jogo, jogoDto.GeneroID, jogoDto.PlataformaID);
+            _repository.Adicionar(jogo, jogoDto.GeneroID, jogoDto.PlataformaID, jogoDto.ClassificacaoId);
 
             return JogoParaDto.ConverterParaDto(jogo);
         }

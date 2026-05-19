@@ -1,8 +1,44 @@
-import { Fragment } from "react/jsx-runtime";
-import styles from "./jogo-lista.module.css"
+import { Fragment, useEffect, useState } from "react";
+import styles from "./jogo-lista.module.css";
 import Card from "../jogo-card/jogo-card";
+import { listarJogo } from "@/pages/api/jogoService";
+import { verificarAutenticacao } from "@/utils/auth";
+
+type Jogo =
+{
+    jogoID: number;
+    nome: string;
+    preco: number;
+    imagemUrl: string;
+}
 
 const Lista = () => {
+
+    const [jogos, setJogos] = useState<Jogo[]>([]);
+    const estaLogado = verificarAutenticacao();
+
+    async function carregarJogos()
+    {
+        try
+        {
+            const lista = await listarJogo();
+            setJogos(lista);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }   
+
+    function deletarJogo(jogoID: number)
+    {
+        console.log("Excluir jogo:", jogoID);
+    }
+
+    useEffect(() => {
+        carregarJogos();
+    }, []);
+
     return (
         <Fragment>
             <div className={styles.filtros}>
@@ -14,12 +50,16 @@ const Lista = () => {
             </div>
 
             <ul className={styles.lista_jogo}>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {jogos.map((jogo) => (
+                <Card
+                    key={jogo.jogoID}
+                    imagem={jogo.imagemUrl}
+                    nome={jogo.nome}
+                    preco={jogo.preco}
+                    jogoID={jogo.jogoID}
+                    onDelete={deletarJogo}
+                    estaLogado={estaLogado}
+                />))}
             </ul>
 
             <nav className={styles.navegacao}>
