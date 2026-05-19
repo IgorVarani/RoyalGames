@@ -33,13 +33,14 @@
 #container_acima{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 80%;
+    width: 75%;
 }
 
 #container_acima img{
-    width: 505px;
-    height: 540px;
-    border-radius: 5px;
+    width: 450px;
+    height: 565px;
+    box-shadow: 0 0 5px var(--cinza);
+    border-radius: 10px;
 }
 
 #container_acima h2{
