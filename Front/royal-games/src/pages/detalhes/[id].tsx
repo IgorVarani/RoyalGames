@@ -4,7 +4,7 @@ import styles from "./detalhes.module.css";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { useRouter } from "next/router";
-import { listarPorId } from "../../api/jogoService";
+import { listarPorId } from "../api/jogoService";
 import { formatarPreco } from "@/utils/formatacao";
 
 type jogo =

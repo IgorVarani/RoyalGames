@@ -19,6 +19,7 @@ const Lista = () => {
     const [jogos, setJogos] = useState<Jogo[]>([]);
     const [paginaAtual, setPaginaAtual] = useState(1);
     const [ordenacao, setOrdenacao] = useState("");
+    const [pesquisa, setPesquisa] = useState("");
     const estaLogado = verificarAutenticacao();
     const jogosPorPagina = 3;
 
@@ -58,42 +59,34 @@ const Lista = () => {
     useEffect(() => {
         carregarJogos();
     }, []);
+    
+    const jogosFiltrados = jogos.filter((jogo) =>
+    jogo.nome.toLowerCase().includes(pesquisa.toLowerCase()));
 
-    const jogosOrdenados = [...jogos];
+    const jogosOrdenados = [...jogosFiltrados];
 
-    if(ordenacao === "menor")
-    {
-        jogosOrdenados.sort((a, b) => a.preco - b.preco);
-    }
-
-    if(ordenacao === "maior")
-    {
-        jogosOrdenados.sort((a, b) => b.preco - a.preco);
-    }
-
-    if(ordenacao === "alfabetica")
-    {
-        jogosOrdenados.sort((a, b) => a.nome.localeCompare(b.nome));
-    }
+    if (ordenacao === "menor") { jogosOrdenados.sort((a, b) => a.preco - b.preco); }
+    if (ordenacao === "maior") { jogosOrdenados.sort((a, b) => b.preco - a.preco); }
+    if (ordenacao === "alfabetica") { jogosOrdenados.sort((a, b) => a.nome.localeCompare(b.nome)); }
 
     const indiceInicial = (paginaAtual - 1) * jogosPorPagina;
     const indiceFinal = indiceInicial + jogosPorPagina;
     const jogosPaginados = jogosOrdenados.slice(indiceInicial, indiceFinal);
-    const totalPaginas = Math.ceil(jogos.length / jogosPorPagina);
+    const totalPaginas = Math.ceil(jogosOrdenados.length / jogosPorPagina);
 
     return (
         <Fragment>
             <Toast/>
             <div className={styles.filtros}>
-                <input type="text" name="Pesquisa" placeholder="Pesquise..." />
+                <input type="text" name="Pesquisa" placeholder="Pesquise..." value={pesquisa}
+                onChange={(e) => { setPesquisa(e.target.value); setPaginaAtual(1); }}/>
                 <div className={styles.botoes}>
                     <select value={ordenacao} onChange={(e) => {setOrdenacao(e.target.value); setPaginaAtual(1);}}>
-                        <option value="">Ordenar</option>
+                        <option value="">Ordem Padrão</option>
                         <option value="menor">Menor Preço</option>
                         <option value="maior">Maior Preço</option>
-                        <option value="alfabetica">Ordem Alfabética</option>
+                        <option value="alfabetica">A-Z</option>
                     </select>
-                    <button>Categoria</button>
                 </div>
             </div>
 
