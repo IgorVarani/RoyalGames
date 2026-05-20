@@ -131,7 +131,7 @@ namespace Royal_Games.Controllers
             try
             {
                 _service.Remover(Id);
-                return StatusCode(204, Id);
+                return Ok("Jogo removido!");
             }
             catch (DomainException ex)
             {

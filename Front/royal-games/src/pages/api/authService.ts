@@ -1,6 +1,8 @@
 import secureLocalStorage from "react-secure-storage";
 import { api } from "./api";
-export async function login(email: string, senha: string){
+
+export async function login(email: string, senha: string)
+{
     try
     {
         //? Requisição:
@@ -12,4 +14,9 @@ export async function login(email: string, senha: string){
     {
         throw new Error("Email ou senha inválidos.");
     }
+}
+
+export function logout()
+{
+    secureLocalStorage.removeItem("Token");
 }

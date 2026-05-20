@@ -44,13 +44,12 @@
 }
 
 .lista_jogo{
-    width: fit-content;
     margin: 60px auto 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 377px);
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 70px;
     padding: 0;
 }
 

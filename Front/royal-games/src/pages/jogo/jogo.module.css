@@ -53,8 +53,7 @@
     gap: 10px;
 }
 
-.campo label,
-#direita label{
+.campo label, #direita label{
     font-family: var(--font-exo2);
     font-size: var(--texto);
     font-weight: 500;
@@ -62,9 +61,7 @@
     white-space: nowrap;
 }
 
-.campo input,
-.campo select,
-#direita textarea{
+.campo input, .campo select, #direita textarea{
     background-color: rgb(from var(--cinza) r g b / 20%);
     box-shadow: 0 0 1px var(--cinza);
     border-radius: 6px;
@@ -77,8 +74,7 @@
     transition: .2s ease;
 }
 
-.campo input,
-.campo select{
+.campo input, .campo select{
     height: 45px;
 }
 
@@ -108,9 +104,7 @@
     resize: none;
 }
 
-#direita textarea:focus,
-.campo input:focus,
-.campo select:focus{
+#direita textarea:focus, .campo input:focus, .campo select:focus{
     border: 1px solid var(--vermelho);
     box-shadow: 0 0 5px rgb(from var(--vermelho) r g b / 40%);
 }
@@ -127,10 +121,7 @@
     font-family: var(--font-exo2);
     font-size: var(--texto);
     cursor: pointer;
-    transition: transform .06s ease,
-                box-shadow .06s ease,
-                background-color .2s ease,
-                color .2s ease;
+    transition: transform .06s ease, box-shadow .06s ease, background-color .2s ease, color .2s ease;
 }
 
 #botao:hover{
@@ -161,23 +152,4 @@
     border: 1px solid var(--vermelho);
     width: 35%;
     margin: 10px auto;
-}
-
-@media(max-width: 1000px){
-
-    #formulario{
-        grid-template-columns: 1fr;
-    }
-
-    .linha{
-        flex-direction: column;
-    }
-
-    #section{
-        width: 92%;
-    }
-
-    .lista{
-        margin: 10% 5% 0%;
-    }
 }

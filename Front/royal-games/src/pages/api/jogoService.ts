@@ -119,3 +119,15 @@ export async function editarJogo(jogoId : number, dados : JogoForm)
         throw new Error(error.response.data);
     }
 }
+
+export async function deletarJogo(jogoId: number)
+{
+    try
+    {
+        await api.delete("Jogo/" + jogoId);
+    }
+    catch(error: any)
+    {
+        throw new Error(error.response?.data || "Erro ao deletar jogo.");
+    }
+}
