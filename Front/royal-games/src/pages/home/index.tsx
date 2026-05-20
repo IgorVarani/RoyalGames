@@ -35,8 +35,13 @@ const Home = () => {
                         <h3>Jogos online podem afetar o comportamento humano?</h3>
                         <hr id={styles.linha_h3}></hr>
                     <div id={styles.comportamento_container}>
-                        <img src="/imgs/lol.svg" alt="Imagem do jogo League of Legends." />
-                        <img src="/imgs/cs.svg" alt="Imagem do jogo Counter-Strike." />
+                        <div className={styles.imagem_card}>
+                            <img src="/imgs/rivals.svg" alt="Imagem do jogo League of Legends." />
+                        </div>
+
+                        <div className={styles.imagem_card}>
+                            <img src="/imgs/cs.svg" alt="Imagem do jogo Counter-Strike." />
+                        </div>
                     </div>
                     <p className={styles.comportamento_texto}>Estudos indicam que jogos podem alterar o comportamento humano...</p>
                     <p className={styles.comportamento_texto}>Principalmente quando o time resolve testar sua paciência em plena partida ranqueada.</p>

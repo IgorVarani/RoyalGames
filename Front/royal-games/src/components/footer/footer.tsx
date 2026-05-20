@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./footer.module.css"
 
 const Footer = () => {
@@ -5,7 +6,9 @@ const Footer = () => {
         <footer id={styles.footer}>
             <div id={styles.container}>
                 <div>
-                    <img src="/imgs/logo.svg" alt="Logo do site."/>
+                    <Link href="/home">
+                        <img src="/imgs/logo.svg" alt="Logo do site."/>
+                    </Link>
                 </div>
 
                 <div>

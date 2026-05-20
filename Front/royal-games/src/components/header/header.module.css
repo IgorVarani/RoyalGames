@@ -42,6 +42,10 @@
     font-size: var(--texto);
 }
 
+#header a:hover, .link:hover{
+    color: var(--vermelho);
+}
+
 #botao{
     border: 2px solid var(--vermelho);
     border-radius: 10px;
@@ -52,7 +56,11 @@
     transition: transform .06s ease, box-shadow .06s ease;
 }
 
+#botao:hover{
+    box-shadow: 0 0 15px var(--vermelho);
+}
+
 #botao:active{
-    transform: translateY(4px);
-    box-shadow: 0 5px 0 var(--vermelho);
+    transform: translateY(6px);
+    box-shadow: 0 5px 15px var(--vermelho);
 }

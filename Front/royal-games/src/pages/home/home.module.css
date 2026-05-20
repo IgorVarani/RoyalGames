@@ -1,10 +1,17 @@
 #main{
     min-height: 100vh;
-    background-color: var(--fundo);
     color: var(--cinza);
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+    radial-gradient(circle at 15% 20%, rgba(122, 59, 255, 0.25) 0%, transparent 20%),
+    radial-gradient(circle at 50% 50%, rgba(122, 59, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 75%, rgba(122, 59, 255, 0.15) 0%, transparent 25%),
+    var(--fundo);
 }
 
 #banner{
@@ -85,16 +92,71 @@
 }
 
 #comportamento_container{
-    box-shadow: 0 0 5px var(--cinza);
+    width: 100%;
+    max-width: 1100px;
+    margin: 5% auto;
+    padding: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-    margin: 5% 0;
+    align-items: center;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(255, 0, 76, 0.08);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border .25s ease;
 }
 
-#comportamento_container img{
-    width: 299px;
-    height: 310px;
+#comportamento_container:hover{
+    transform: translateY(-6px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 76, 0.18);
+}
+
+.imagem_card{
+    width: fit-content;
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(255, 0, 76, 0.08);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border .25s ease;
+}
+
+.imagem_card:hover{
+    transform: translateY(-6px) scale(1.02);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 35px rgba(255, 0, 76, 0.18);
+}
+
+.imagem_card img{
+    border-radius: 12px;
+    display: block;
 }
 
 .comportamento_texto{
