@@ -34,7 +34,7 @@ const Home = () => {
                         <hr id={styles.linha_h3}></hr>
                     <div id={styles.comportamento_container}>
                         <div className={styles.imagem_card}>
-                            <img src="/imgs/lol.svg" alt="Imagem do jogo League of Legends." />
+                            <img className={styles.rivals} src="/imgs/rivals.svg" alt="Imagem do jogo League of Legends." />
                         </div>
 
                         <div className={styles.imagem_card}>
