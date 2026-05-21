@@ -1,4 +1,3 @@
-import { ToastContainer } from "react-toastify";
 import { Fragment, useEffect, useState } from "react";
 import styles from "./detalhes.module.css";
 import Header from "@/components/header/header";
@@ -55,7 +54,6 @@ const Detalhes = () => {
 
     return (
         <Fragment>
-            <ToastContainer/>
             <Header page="detalhes"/>
             <main id={styles.main}>
                 <section id={styles.section}>

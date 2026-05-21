@@ -45,6 +45,10 @@
     font-size: var(--texto);
 }
 
+#ul a:hover{
+    color: var(--vermelho);
+}
+
 #linha{
     width: 85%;
     border: 1px solid var(--vermelho);

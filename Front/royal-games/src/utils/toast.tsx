@@ -1,34 +1,26 @@
-import { toast } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
+import styles from "./toast.module.css";
 
-export const notificao = (msg: string) => toast.success(msg);
-export const erro = (msg: string) => toast.error(msg);
+const config: ToastOptions =
+{
+    className: styles.toast,
+};
 
-export const toastConfirmarExclusao = (aoConfirmar: () => void) => {
-    toast(
-        ({ closeToast }) => (
-            <div>
+export const sucesso = ( msg: string, callback?: () => void ) => { toast.success(msg, { ...config, onClose: callback }); };
+
+export const erro = (msg: string) => { toast.error(msg, config); };
+
+export const toastConfirmarExclusao = ( aoConfirmar: () => void ) =>
+{
+    toast(({ closeToast }) => (
+            <div className={styles.confirmacao}>
                 <p>Deseja realmente excluir?</p>
+                <div className={styles.acoes}>
+                    <button className={styles.confirmar} onClick={() => { aoConfirmar(); closeToast?.(); }}>Sim</button>
 
-                <div style={{ display: "flex", gap: "8px", marginTop: "10px" }}>
-                    <button style={{ border: "none", padding: "8px", borderRadius: "5px", backgroundColor: "#451201", cursor: "pointer", color: "#FFA300"}}
-                        onClick={() => {
-                            aoConfirmar();
-                            closeToast();
-                        }}
-                    >
-                        Sim
-                    </button>
-
-                    <button onClick={closeToast} style={{ border: "none", padding: "8px", borderRadius: "5px", backgroundColor: "#451201", cursor: "pointer", color: "#FFA300"}}>
-                        Cancelar
-                    </button>
+                    <button className={styles.cancelar} onClick={() => closeToast?.()}>Cancelar</button>
                 </div>
             </div>
-        ),
-        {
-            autoClose: false,
-            closeOnClick: false,
-            draggable: false,
-        }
+        ), { ...config, autoClose: false }
     );
 };

@@ -3,8 +3,7 @@ import styles from "./jogo-lista.module.css";
 import Card from "../jogo-card/jogo-card";
 import { deletarJogo as deletarJogoService, listarJogo } from "@/pages/api/jogoService";
 import { verificarAutenticacao } from "@/utils/auth";
-import { toastConfirmarExclusao, notificao, erro } from "@/utils/toast";
-import Toast from "../toast/toast";
+import { toastConfirmarExclusao, sucesso, erro } from "@/utils/toast";
 
 type Jogo =
 {
@@ -47,7 +46,7 @@ const Lista = () => {
                     jogosAnteriores.filter((jogo) => jogo.jogoID !== jogoID));
 
                 setPaginaAtual(1);
-                notificao("Jogo excluído com sucesso!");
+                sucesso("Jogo excluído com sucesso!");
             }
             catch(error)
             {
@@ -76,7 +75,6 @@ const Lista = () => {
 
     return (
         <Fragment>
-            <Toast/>
             <div className={styles.filtros}>
                 <input type="text" name="Pesquisa" placeholder="Pesquise..." value={pesquisa}
                 onChange={(e) => { setPesquisa(e.target.value); setPaginaAtual(1); }}/>
@@ -106,8 +104,8 @@ const Lista = () => {
             <nav className={styles.navegacao}>
                 <ul>
                     {Array.from({ length: totalPaginas }, (_, index) => (
-                    <li key={index + 1} onClick={() => setPaginaAtual(index + 1)}>
-                        {index + 1}
+                    <li key={index + 1} onClick={() => setPaginaAtual(index + 1)}
+                    className={paginaAtual === index + 1 ? styles.ativo : ""}> {index + 1}
                     </li>))}
                 </ul>
             </nav>

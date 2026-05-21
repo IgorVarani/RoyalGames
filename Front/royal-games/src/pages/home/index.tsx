@@ -1,6 +1,5 @@
 import { Fragment } from "react/jsx-runtime";
 import styles from "./home.module.css"
-import { ToastContainer } from "react-toastify/unstyled";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import Lista from "@/components/jogo-lista/jogo-lista";
@@ -9,7 +8,6 @@ const Home = () => {
     return (
         <Fragment>
             <Header page="home"/>
-            <ToastContainer/>
             <main id={styles.main}>
                 <section id={styles.banner}>
                     <div id={styles.banner_esquerda}>
@@ -36,7 +34,7 @@ const Home = () => {
                         <hr id={styles.linha_h3}></hr>
                     <div id={styles.comportamento_container}>
                         <div className={styles.imagem_card}>
-                            <img src="/imgs/rivals.svg" alt="Imagem do jogo League of Legends." />
+                            <img src="/imgs/lol.svg" alt="Imagem do jogo League of Legends." />
                         </div>
 
                         <div className={styles.imagem_card}>

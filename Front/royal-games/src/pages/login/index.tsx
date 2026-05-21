@@ -1,44 +1,41 @@
 import { Fragment } from "react/jsx-runtime";
 import styles from "./login.module.css"
-import { ToastContainer } from "react-toastify/unstyled";
 import { login } from "../api/authService";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { toast } from "react-toastify";
 import Link from "next/link";
+import { sucesso, erro } from "@/utils/toast";
 
 const Login = () => {
 
     const [email, setEmail] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
-
     const router = useRouter();
-    const notificao = (msg: string ) => toast.success(msg);
-    const erro = (msg: string) => toast.error(msg);
+    const [loading, setLoading] = useState(false);
 
     async function autenticar(e: React.FormEvent<HTMLFormElement>)
     {
         e.preventDefault();
+        if (loading) return;
+
         try
         {
+            setLoading(true);
             await login(email, senha);
-            notificao("Login bem sucedido!");
 
-            setTimeout(() => {
-                router.push("/home");
-            }, 2000);
+            sucesso("Login bem sucedido!", () => router.push("/home"));
         }
-        catch(error: any)
+        catch (error: any)
         {
             erro(error.message);
+            setLoading(false);
         }
     }
 
     return (
         <Fragment>
-            <ToastContainer/>
             <main id={styles.main}>
-                <img src="/imgs/login.svg" alt="Imagem de uma mulher combinando com o tema do site."/>
+                <img className={styles.imagem} src="/imgs/login.svg" alt="Imagem de uma mulher combinando com o tema do site."/>
                 <section id={styles.section}>
                     <div id={styles.campo_login}>
                         <div>
@@ -60,7 +57,9 @@ const Login = () => {
                             </div>
                             
                             <div className={styles.campo_button}>    
-                                <button>Entrar</button>
+                                <button type="submit" disabled={loading}>
+                                    {loading ? "Entrando..." : "Entrar"}
+                                </button>
                             </div>
                         </form>
                     </div>

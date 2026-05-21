@@ -3,12 +3,11 @@ import styles from "./jogo.module.css";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import Lista from "@/components/jogo-lista/jogo-lista";
-import Toast from "@/components/toast/toast";
 import { useRouter } from "next/router";
 import { listarClassificacaoIndicativa, listarGenero, listarPlataforma } from "../api/genericService";
 import { cadastrarJogo, editarJogo, listarPorId } from "../api/jogoService";
-import { erro, notificao } from "@/utils/toast";
 import { verificarAutenticacao } from "@/utils/auth";
+import { erro, sucesso } from "@/utils/toast";
 
 interface ClassificacaoIndicativa
 {
@@ -134,15 +133,13 @@ const Cadastrar = () => {
             if (telaEditar)
             {
                 await editarJogo(Number(id), dados);
-                notificao("Jogo editado com sucesso!");
+                sucesso("Jogo editado com sucesso!", () => { router.push("/home"); });
             }
             else
             {
                 await cadastrarJogo(dados);
-
-                notificao("Jogo cadastrado com sucesso!");
+                sucesso("Jogo cadastrado com sucesso!", () => { router.push("/home"); });
             }
-                router.push("/home");
         }
         catch (error: any)
         {
@@ -174,7 +171,6 @@ const Cadastrar = () => {
     return (
         <Fragment>
             <Header page="cadastrar" />
-            <Toast />
             <main id={styles.main}>
                 <section id={styles.section}>
                     <form id={styles.campo_cadastro} onSubmit={salvarJogo}>
